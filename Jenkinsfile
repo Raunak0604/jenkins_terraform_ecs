@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh "aws s3 ls"
             }
+        }
         stage('Plan') {
             steps {
                 sh 'terraform init'
