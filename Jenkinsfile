@@ -10,6 +10,10 @@ pipeline {
 
    agent  any
     stages {
+        stage('ls') {
+            steps {
+                sh "aws s3 ls"
+            }
         stage('Plan') {
             steps {
                 sh 'terraform init'
