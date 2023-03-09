@@ -10,15 +10,6 @@ pipeline {
 
    agent  any
     stages {
-        stage('checkout') {
-            steps {
-                 script{
-                        sh 'git clone https://github.com/Mustak-Ahmed/jenkins_terraform_ecs.git'
-                        sh 'ls'
-                    }
-                }
-            }
-
         stage('Plan') {
             steps {
                 sh 'terraform init'
