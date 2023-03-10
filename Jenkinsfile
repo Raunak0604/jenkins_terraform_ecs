@@ -24,25 +24,14 @@ pipeline {
                 sh "terraform plan"
             }
         }
-        stage('Approval') {
-           when {
-               not {
-                   equals expected: true, actual: params.autoApprove
-               }
-           }
+       stage ('Deploy To Prod'){
+  	input{
+   		 message "Do you want to proceed for production deployment?"
+  	}
+    	steps {
+                sh 'terraform apply -auto-approve'
 
-           steps {
-               script {
-                    input message: "Do you want to apply the plan?",
-                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-               }
-           }
-       }
-
-        stage('Apply') {
-            steps {
-                sh "terraform apply -input=false tfplan"
-            }
+              }
         }
     }
 
