@@ -109,7 +109,7 @@ resource "aws_ecs_task_definition" "aws-ecs-task" {
   [
     {
       "name": "container",
-      "image": "${var.imageUri}",
+      "image": "879580385544.dkr.ecr.ap-south-1.amazonaws.com/jenkins-ecr:v${BUILD_NUMBER}",
       "portMappings": [
         {
           "containerPort": 5000,
