@@ -140,10 +140,10 @@ resource "aws_ecs_service" "aws-ecs-service" {
   force_new_deployment = true
 
   network_configuration {
-    subnets          = [aws_subnet.main.id]
+    subnets          = ["${aws_subnet.main.id}"]
     assign_public_ip = true
     security_groups = [
-      aws_security_group.allow_tls.id,
+      "${aws_security_group.allow_tls.id}",
     ]
   }
     load_balancer {
@@ -152,15 +152,15 @@ resource "aws_ecs_service" "aws-ecs-service" {
     container_port   = 5000
   }
 
-  depends_on = [aws_lb_listener.listener]
+  depends_on = ["${aws_lb_listener.listener}"]
 }
 
   resource "aws_lb" "test" {
   name               = "alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_tls.id]
-  subnets            = [aws_subnet.main.id, aws_subnet.main2.id]
+  security_groups    = ["${aws_security_group.allow_tls.id}"]
+  subnets            = ["${aws_subnet.main.id, aws_subnet.main2.id}"]
 
    ip_address_type    = "ipv4"
 }
