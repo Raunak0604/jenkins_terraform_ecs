@@ -152,7 +152,7 @@ resource "aws_ecs_service" "aws-ecs-service" {
     container_port   = 5000
   }
 
-  depends_on = ["${aws_lb_listener.listener}"]
+#   depends_on = [aws_lb_listener.listener]
 }
 
   resource "aws_lb" "test" {
