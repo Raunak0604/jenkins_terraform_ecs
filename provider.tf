@@ -6,9 +6,6 @@ terraform {
     }
   }
 }
-terraform {
-  required_version = ">= 0.12"
-}
 
 # Configure and downloading plugins for aws
 provider "aws" {
