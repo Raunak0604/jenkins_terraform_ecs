@@ -17,6 +17,7 @@ pipeline {
         stage('Plan') {
             steps {
                 sh 'terraform init -verify-plugins=false'
+		sh 'export TF_VAR_imageUri=879580385544.dkr.ecr.ap-south-1.amazonaws.com/jenkins-ecr:v${BUILD_NUMBER}'
                 sh "terraform plan"
             }
         }
