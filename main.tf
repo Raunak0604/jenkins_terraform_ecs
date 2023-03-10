@@ -160,7 +160,7 @@ resource "aws_ecs_service" "aws-ecs-service" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.allow_tls.id}"]
-  subnets            = ["${aws_subnet.main.id, aws_subnet.main2.id}"]
+  subnets            = ["${aws_subnet.main.id}", "{$aws_subnet.main2.id}"]
 
    ip_address_type    = "ipv4"
 }
